@@ -1,0 +1,43 @@
+﻿@model IEnumerable<SkiingJumps.Models.JumpsResult>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <center>
+        <h2>SKI JUMPS RESULTS</h2>
+
+        <table class="table">
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Country</th>
+                <th>Meters</th>
+                <th>Pionts</th>
+                <th>Hill Name</th>
+                <th>Height</th>
+                <th>City</th>
+                <th>Hill country</th>
+
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.GetJumpers.Name</td>
+                    <td>@item.GetJumpers.Surname</td>
+                    <td>@item.GetJumpersCountries.Name</td>
+                    <td>@item.GetJumps.Meters</td>
+                    <td>@item.GetJumps.Points</td>
+                    <td>@item.GetHills.Name</td>
+                    <td>@item.GetHills.Height</td>
+                    <td>@item.GetCities.Name</td>
+                    <td>@item.GetHillsCountries.Name</td>
+
+                </tr>
+            }
+        </table>
+        <div>
+            <p> <a class="btn btn-default btn-size " href="@Url.Action("Index", "InsertRecord")">Add New Records</a></p>
+        </div>
+    </center>

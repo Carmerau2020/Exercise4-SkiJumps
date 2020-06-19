@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="Cities">
+      <EntityTypeMapping TypeName="Model.Cities">
+        <MappingFragment StoreEntitySet="Cities">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="Model.Countries">
+        <MappingFragment StoreEntitySet="Countries">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ski_jumpers">
+      <EntityTypeMapping TypeName="Model.ski_jumpers">
+        <MappingFragment StoreEntitySet="ski_jumpers">
+          <ScalarProperty Name="JumperID" ColumnName="JumperID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ski_jumping_hills">
+      <EntityTypeMapping TypeName="Model.ski_jumping_hills">
+        <MappingFragment StoreEntitySet="ski_jumping_hills">
+          <ScalarProperty Name="JumpingHillID" ColumnName="JumpingHillID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ski_jumps">
+      <EntityTypeMapping TypeName="Model.ski_jumps">
+        <MappingFragment StoreEntitySet="ski_jumps">
+          <ScalarProperty Name="JumpID" ColumnName="JumpID" />
+          <ScalarProperty Name="JumperID" ColumnName="JumperID" />
+          <ScalarProperty Name="JumpinhHillID" ColumnName="JumpinhHillID" />
+          <ScalarProperty Name="Meters" ColumnName="Meters" />
+          <ScalarProperty Name="Points" ColumnName="Points" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="InsertDataResults" FunctionName="Model.Store.InsertDataResults" />
+  </EntityContainerMapping>
+</Mapping>

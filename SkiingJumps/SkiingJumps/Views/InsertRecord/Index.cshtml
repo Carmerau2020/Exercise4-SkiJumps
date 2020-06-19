@@ -1,0 +1,106 @@
+﻿@model SkiingJumps.Models.InsertData
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<center>
+    <h2>Create new record</h2>
+</center>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Jumper Name</p>
+            <div>
+                @Html.EditorFor(model => model.JumperName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JumperName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Jumper Surname</p>
+            <div>
+                @Html.EditorFor(model => model.JumperSurname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JumperSurname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Jumper Country</p>
+            <div>
+                @Html.EditorFor(model => model.JumperCountry, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.JumperCountry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Meters</p>
+            <div>
+                @Html.EditorFor(model => model.Meters, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Meters, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Points</p>
+            <div>
+                @Html.EditorFor(model => model.Points, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Points, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Hill Name</p>
+            <div>
+                @Html.EditorFor(model => model.HillName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HillName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Height</p>
+            <div>
+                @Html.EditorFor(model => model.Height, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Height, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">City</p>
+            <div>
+                @Html.EditorFor(model => model.City, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <p style=" font-size:medium" class="col-md-2">Hill Country</p>
+            <div>
+                @Html.EditorFor(model => model.HillCountry, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HillCountry, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <h4><input type="submit" value="SUBMIT" /></h4>
+            </div>
+        </div>
+        <h4>@ViewBag.message</h4>
+    </div>
+}
+<div>
+    <h4> @Html.ActionLink("Clear", "Index")</h4>
+    <h4> <a href="@Url.Action("Index", "SkiJumpsResultTables")">See result</a></h4>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

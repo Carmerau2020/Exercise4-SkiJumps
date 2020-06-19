@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CityID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ski_jumpers">
+    <Key>
+      <PropertyRef Name="JumperID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="JumperID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ski_jumping_hills">
+    <Key>
+      <PropertyRef Name="JumpingHillID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="CityID" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="JumpingHillID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Height" Type="Int32" Nullable="false" />
+    <Property Name="CityID" Type="Int32" Nullable="false" />
+    <Property Name="CountryID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ski_jumps">
+    <Key>
+      <PropertyRef Name="JumpID" />
+      <PropertyRef Name="JumperID" />
+      <PropertyRef Name="JumpinhHillID" />
+      <PropertyRef Name="Meters" />
+      <PropertyRef Name="Points" />
+    </Key>
+    <Property Name="JumpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JumperID" Type="Int32" Nullable="false" />
+    <Property Name="JumpinhHillID" Type="Int32" Nullable="false" />
+    <Property Name="Meters" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Points" Type="Decimal" Precision="5" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cities" EntityType="Self.Cities" />
+    <EntitySet Name="Countries" EntityType="Self.Countries" />
+    <EntitySet Name="ski_jumpers" EntityType="Self.ski_jumpers" />
+    <EntitySet Name="ski_jumping_hills" EntityType="Self.ski_jumping_hills" />
+    <EntitySet Name="ski_jumps" EntityType="Self.ski_jumps" />
+    <FunctionImport Name="InsertDataResults">
+      <Parameter Name="JumperName" Mode="In" Type="String" />
+      <Parameter Name="JumperSurname" Mode="In" Type="String" />
+      <Parameter Name="JumperCountry" Mode="In" Type="String" />
+      <Parameter Name="Meters" Mode="In" Type="Double" />
+      <Parameter Name="Points" Mode="In" Type="Double" />
+      <Parameter Name="HillName" Mode="In" Type="String" />
+      <Parameter Name="Height" Mode="In" Type="Int32" />
+      <Parameter Name="City" Mode="In" Type="String" />
+      <Parameter Name="HillCountry" Mode="In" Type="String" />
+      <Parameter Name="JCountryID" Mode="In" Type="Int32" />
+      <Parameter Name="HCountryID" Mode="In" Type="Int32" />
+      <Parameter Name="CityID" Mode="In" Type="Int32" />
+      <Parameter Name="JumperID" Mode="In" Type="Int32" />
+      <Parameter Name="HillID" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

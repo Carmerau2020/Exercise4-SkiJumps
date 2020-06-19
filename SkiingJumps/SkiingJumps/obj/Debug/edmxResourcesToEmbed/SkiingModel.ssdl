@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JAWOR\SOURCE\REPOS\SKI_JUMPS_RESULTS\SKI_JUMPS_RESULTS\APP_DATA\MSSQLLOCALDB.MDF.dbo.Cities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Cities">
+    <Key>
+      <PropertyRef Name="CityID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JAWOR\SOURCE\REPOS\SKI_JUMPS_RESULTS\SKI_JUMPS_RESULTS\APP_DATA\MSSQLLOCALDB.MDF.dbo.Countries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Countries">
+    <Key>
+      <PropertyRef Name="CountryID" />
+      <PropertyRef Name="Name" />
+    </Key>
+    <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JAWOR\SOURCE\REPOS\SKI_JUMPS_RESULTS\SKI_JUMPS_RESULTS\APP_DATA\MSSQLLOCALDB.MDF.dbo.ski_jumpers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ski_jumpers">
+    <Key>
+      <PropertyRef Name="JumperID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Surname" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="JumperID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JAWOR\SOURCE\REPOS\SKI_JUMPS_RESULTS\SKI_JUMPS_RESULTS\APP_DATA\MSSQLLOCALDB.MDF.dbo.ski_jumping_hills' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ski_jumping_hills">
+    <Key>
+      <PropertyRef Name="JumpingHillID" />
+      <PropertyRef Name="Name" />
+      <PropertyRef Name="Height" />
+      <PropertyRef Name="CityID" />
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="JumpingHillID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Height" Type="int" Nullable="false" />
+    <Property Name="CityID" Type="int" Nullable="false" />
+    <Property Name="CountryID" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'C:\USERS\JAWOR\SOURCE\REPOS\SKI_JUMPS_RESULTS\SKI_JUMPS_RESULTS\APP_DATA\MSSQLLOCALDB.MDF.dbo.ski_jumps' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ski_jumps">
+    <Key>
+      <PropertyRef Name="JumpID" />
+      <PropertyRef Name="JumperID" />
+      <PropertyRef Name="JumpinhHillID" />
+      <PropertyRef Name="Meters" />
+      <PropertyRef Name="Points" />
+    </Key>
+    <Property Name="JumpID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="JumperID" Type="int" Nullable="false" />
+    <Property Name="JumpinhHillID" Type="int" Nullable="false" />
+    <Property Name="Meters" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+    <Property Name="Points" Type="decimal" Precision="5" Scale="2" Nullable="false" />
+  </EntityType>
+  <Function Name="InsertDataResults" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="JumperName" Type="varchar" Mode="In" />
+    <Parameter Name="JumperSurname" Type="varchar" Mode="In" />
+    <Parameter Name="JumperCountry" Type="varchar" Mode="In" />
+    <Parameter Name="Meters" Type="float" Mode="In" />
+    <Parameter Name="Points" Type="float" Mode="In" />
+    <Parameter Name="HillName" Type="varchar" Mode="In" />
+    <Parameter Name="Height" Type="int" Mode="In" />
+    <Parameter Name="City" Type="varchar" Mode="In" />
+    <Parameter Name="HillCountry" Type="varchar" Mode="In" />
+    <Parameter Name="JCountryID" Type="int" Mode="In" />
+    <Parameter Name="HCountryID" Type="int" Mode="In" />
+    <Parameter Name="CityID" Type="int" Mode="In" />
+    <Parameter Name="JumperID" Type="int" Mode="In" />
+    <Parameter Name="HillID" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Cities" EntityType="Self.Cities" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Cities].[CityID] AS [CityID], 
+    [Cities].[Name] AS [Name]
+    FROM [dbo].[Cities] AS [Cities]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Countries" EntityType="Self.Countries" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Countries].[CountryID] AS [CountryID], 
+    [Countries].[Name] AS [Name]
+    FROM [dbo].[Countries] AS [Countries]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ski_jumpers" EntityType="Self.ski_jumpers" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ski_jumpers].[JumperID] AS [JumperID], 
+    [ski_jumpers].[Name] AS [Name], 
+    [ski_jumpers].[Surname] AS [Surname], 
+    [ski_jumpers].[CountryID] AS [CountryID]
+    FROM [dbo].[ski_jumpers] AS [ski_jumpers]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ski_jumping_hills" EntityType="Self.ski_jumping_hills" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ski_jumping_hills].[JumpingHillID] AS [JumpingHillID], 
+    [ski_jumping_hills].[Name] AS [Name], 
+    [ski_jumping_hills].[Height] AS [Height], 
+    [ski_jumping_hills].[CityID] AS [CityID], 
+    [ski_jumping_hills].[CountryID] AS [CountryID]
+    FROM [dbo].[ski_jumping_hills] AS [ski_jumping_hills]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="ski_jumps" EntityType="Self.ski_jumps" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ski_jumps].[JumpID] AS [JumpID], 
+    [ski_jumps].[JumperID] AS [JumperID], 
+    [ski_jumps].[JumpinhHillID] AS [JumpinhHillID], 
+    [ski_jumps].[Meters] AS [Meters], 
+    [ski_jumps].[Points] AS [Points]
+    FROM [dbo].[ski_jumps] AS [ski_jumps]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
